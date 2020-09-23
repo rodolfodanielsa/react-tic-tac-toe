@@ -21,7 +21,7 @@ export default class Board extends Component {
 
         let [winner,
             winnerLine] = calculateWinner(squares);
-
+            console.log('WINNER?', winner);    
         if (squares[i] || winner) {
             return;
         }
@@ -36,6 +36,7 @@ export default class Board extends Component {
 
     renderSquare(i) {
         let line = [];
+        console.log(this.state.squares);
         let [winner,
             winnerLine] = calculateWinner(this.state.squares);
         if (winner) {
@@ -44,8 +45,8 @@ export default class Board extends Component {
             console.log(i);
             line = winnerLine;
         }
-        console.log(line.indexOf(i) > 0);
-        console.log(line.indexOf(i));
+        //console.log(line.indexOf(i) > 0);
+        //console.log(line.indexOf(i));
         let winClass = line.indexOf(i) >= 0
             ? 'win'
             : '';
@@ -58,8 +59,19 @@ export default class Board extends Component {
     render() {
         return (
             <div className='board'>
-                
+                 <div className='row'>
+                    {this.renderSquare(0)}
+                    {this.renderSquare(1)}
+                    {this.renderSquare(2)}
+                </div>
+                 <div className='row'>
+                    {this.renderSquare(3)}
+                    {this.renderSquare(4)}
+                    {this.renderSquare(5)}
+                </div>
                 <div className='row'>
+                    {this.renderSquare(6)}
+                    {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </div>
             </div>
